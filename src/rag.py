@@ -6,7 +6,6 @@ def ask(question):
     results = search(
         question,
         top_k=3,
-        max_distance=0.85,
     )
 
     if not results:
