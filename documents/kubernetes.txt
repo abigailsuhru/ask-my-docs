@@ -1,0 +1,32 @@
+Kubernetes is an open-source container orchestration platform.
+It automates the deployment, scaling, and management of containerized applications.
+
+A Kubernetes cluster consists of a control plane and one or more worker nodes.
+The control plane manages the overall state of the cluster.
+Worker nodes run the applications and workloads.
+
+A Pod is the smallest deployable unit in Kubernetes.
+A Pod represents one or more containers that are deployed together.
+Containers inside the same Pod share networking and storage resources.
+
+A Kubernetes Service provides a stable network endpoint for accessing a group of Pods.
+Pods are ephemeral, which means their IP addresses can change.
+A Service provides a stable IP address and DNS name for accessing those Pods.
+
+An Ingress manages external HTTP and HTTPS access to services within a Kubernetes cluster.
+It can provide routing based on hostnames and URL paths.
+An Ingress controller is responsible for implementing the Ingress rules.
+
+A ConfigMap stores non-confidential configuration data in key-value pairs.
+Applications can consume ConfigMap values as environment variables or mounted files.
+
+A Secret stores sensitive information such as passwords, tokens, or credentials.
+Kubernetes Secrets can be consumed by Pods as environment variables or mounted files.
+
+A Deployment manages a set of replicated Pods.
+It provides declarative updates and allows applications to be rolled out gradually.
+Deployments are commonly used to maintain the desired number of replicas.
+
+A ReplicaSet ensures that a specified number of Pod replicas are running.
+If a Pod fails, the ReplicaSet creates another Pod to maintain the desired number.
+Deployments normally manage ReplicaSets rather than users managing them directly.
