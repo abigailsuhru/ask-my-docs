@@ -26,10 +26,20 @@ ids = [
 ]
 
 
-collection.add(
+metadatas = [
+    {
+        "source": document_path.name,
+        "chunk_id": i,
+    }
+    for i in range(len(chunks))
+]
+
+
+collection.upsert(
     ids=ids,
     documents=chunks,
     embeddings=embeddings.tolist(),
+    metadatas=metadatas,
 )
 
 

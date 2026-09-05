@@ -15,14 +15,41 @@ print(
 )
 
 
-for i, document in enumerate(
-    results["documents"][0],
-    start=1,
-):
+if not results:
 
-    distance = results["distances"][0][i - 1]
+    print(
+        "I couldn't find relevant information "
+        "in the documents."
+    )
 
-    print(f"--- RESULT {i} ---")
-    print(f"Distance: {distance:.4f}")
-    print(document)
-    print()
+else:
+
+    for i, result in enumerate(
+        results,
+        start=1,
+    ):
+
+        print(
+            f"--- RESULT {i} ---"
+        )
+
+        print(
+            f"Distance: "
+            f"{result['distance']:.4f}"
+        )
+
+        print(
+            f"Source: "
+            f"{result['metadata']['source']}"
+        )
+
+        print(
+            f"Chunk: "
+            f"{result['metadata']['chunk_id']}"
+        )
+
+        print(
+            result["document"]
+        )
+
+        print()

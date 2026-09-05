@@ -17,38 +17,58 @@ query = st.text_input(
 
 if st.button("Ask"):
 
-    if query:
+    if not query:
+
+        st.warning(
+            "Please enter a question."
+        )
+
+    else:
 
         results = search(
             query,
             top_k=3,
         )
 
-        st.subheader(
-            "Retrieved information"
-        )
+        if not results:
 
-        for i, document in enumerate(
-            results["documents"][0],
-            start=1,
-        ):
-
-            distance = results["distances"][0][i - 1]
-
-            st.write(
-                f"### Result {i}"
+            st.warning(
+                "I couldn't find relevant "
+                "information in the documents."
             )
 
-            st.write(
-                f"Distance: {distance:.4f}"
+        else:
+
+            st.subheader(
+                "Retrieved information"
             )
 
-            st.write(document)
+            for i, result in enumerate(
+                results,
+                start=1,
+            ):
 
-            st.divider()
+                st.write(
+                    f"### Result {i}"
+                )
 
-    else:
+                st.write(
+                    f"Distance: "
+                    f"{result['distance']:.4f}"
+                )
 
-        st.warning(
-            "Please enter a question."
-        )
+                st.write(
+                    f"Source: "
+                    f"{result['metadata']['source']}"
+                )
+
+                st.write(
+                    f"Chunk: "
+                    f"{result['metadata']['chunk_id']}"
+                )
+
+                st.write(
+                    result["document"]
+                )
+
+                st.divider()

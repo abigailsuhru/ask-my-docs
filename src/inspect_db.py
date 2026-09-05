@@ -5,10 +5,21 @@ print("Number of documents:")
 print(collection.count())
 
 
-print("\nStored documents:")
+results = collection.get(
+    include=["documents", "metadatas"]
+)
 
-results = collection.get()
 
-for document in results["documents"]:
-    print("\n---")
-    print(document)
+for i, document in enumerate(
+    results["documents"]
+):
+
+    print("\n--------------------")
+
+    print(
+        f"Document: {document}"
+    )
+
+    print(
+        f"Metadata: {results['metadatas'][i]}"
+    )
