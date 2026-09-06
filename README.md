@@ -2,6 +2,19 @@
 
 Ask My Docs is a fully local RAG application.
 
+Steps to run:
+1. Make sure git and python are installed 
+2. Clone this repo
+3. cd ask-my-docs
+4. python -m venv .venv
+5. .venv\Scripts\Activate.ps1
+6. python -m pip install --upgrade pip
+7. pip install -r requirements.txt
+8. Install ollama - check -> ollama --version
+9. ollama pull llama3.2:3b
+10. streamlit run src/app.py
+
+
 ```text
 Document Upload → Load → Chunk → Embed → ChromaDB
                                           ↓
